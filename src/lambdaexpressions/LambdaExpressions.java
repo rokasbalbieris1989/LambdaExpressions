@@ -52,11 +52,26 @@ public class LambdaExpressions {
         System.out.println(lamdbdaComparison2);
         //----------------------------------------------------------------------
         
+        
+        
         //Using interface
         //----------------------------------------------------------------------
-        MyFunction myFunction = () -> {System.out.println("Hello from interface");};
+//        MyFunction myFunction = () -> {System.out.println("Hello from interface");};
+//        myFunction.apply();
         
-        myFunction.apply();
+        //----------------------------------------------------------------------
+        MyFunction myFunction = (text1,text2) -> {System.out.println(text1+" "+text2);};
+        
+        myFunction.apply("Hello","World");
+        //----------------------------------------------------------------------
+        
+        //Using interface + return
+        MyFunctionWithReturn myFunctionWithReturn = (text1,text2) -> {
+            System.out.println(text1+" "+text2);
+            return text1 + " + " + text2;
+        };
+        
+        String returnValue = myFunctionWithReturn.apply("Hello","World");
     }
     
 }
