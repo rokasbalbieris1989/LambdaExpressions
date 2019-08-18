@@ -41,6 +41,22 @@ public class LambdaExpressions {
         int lamdbdaComparison = stringLambdaComparator.compare("Hello", "Hello there");
         System.out.println(lamdbdaComparison);
         //----------------------------------------------------------------------
+        
+        //Simplyfied 
+        //----------------------------------------------------------------------
+        Comparator<String> stringLambdaComparator2 = 
+                (o1, o2) ->  o1.compareTo(o2);
+        
+        
+        int lamdbdaComparison2 = stringLambdaComparator2.compare("Hello", "Hello there");
+        System.out.println(lamdbdaComparison2);
+        //----------------------------------------------------------------------
+        
+        //Using interface
+        //----------------------------------------------------------------------
+        MyFunction myFunction = () -> {System.out.println("Hello from interface");};
+        
+        myFunction.apply();
     }
     
 }
