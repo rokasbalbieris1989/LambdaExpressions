@@ -72,6 +72,7 @@ public class LambdaExpressions {
         };
         
         String returnValue = myFunctionWithReturn.apply("Hello","World");
+        System.out.println(returnValue);
     }
     
 }
