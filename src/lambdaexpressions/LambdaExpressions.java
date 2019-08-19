@@ -5,6 +5,8 @@
  */
 package lambdaexpressions;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Comparator;
 
 /**
@@ -14,7 +16,7 @@ import java.util.Comparator;
 public class LambdaExpressions {
 
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
         //Usual way
         //----------------------------------------------------------------------
@@ -73,6 +75,25 @@ public class LambdaExpressions {
         
         String returnValue = myFunctionWithReturn.apply("Hello","World");
         System.out.println(returnValue);
+        //----------------------------------------------------------------------
+        
+        //Fuctional interface
+        
+        //Java lambda expressions can implement intefaces with a single 
+        //unimplemented (abstract) method
+        //but as many static or default methods as we like
+        
+        
+        MyInterface myInterface = (String text) -> {
+            System.out.println(text);
+        };
+        
+        myInterface.printIt("Hello World");
+        
+        myInterface.printUtf8To("Hello File", new FileOutputStream("data.txt"));
+        
+        MyInterface.printItToSystemOut("Hello Out");
+        
     }
     
 }
