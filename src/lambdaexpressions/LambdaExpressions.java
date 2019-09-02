@@ -14,7 +14,10 @@ import java.util.Comparator;
  * @author me
  */
 public class LambdaExpressions {
-
+    
+    static String staticVariable = "Hello";
+    
+    private String privateVariable = "Private ( Instance ) variable";
     
     public static void main(String[] args) throws IOException {
         
@@ -94,6 +97,47 @@ public class LambdaExpressions {
         
         MyInterface.printItToSystemOut("Hello Out");
         
+        //Simple Variable Capture-----------------------------------------------
+        
+        final String variable = "Word";
+        
+        MyInterface myInterface3 = (String text) -> {
+            System.out.println(text+variable);
+        };
+        
+        myInterface3.printIt("Simple variable: ");
+        
+        //variable="word2"; the variable cannot be changed after... better to be
+        //declared final
+        
+        
+        //Static variable capture-----------------------------------------------
+        
+        MyInterface myInterface4 = (String text) -> {
+            System.out.println(text+staticVariable);
+        };
+        
+        myInterface4.printIt("With static variable: ");
+        
+        staticVariable= "Changed static variable";
+        
+        myInterface4.printIt("With new static variable: ");
+        
+        LambdaExpressions instance = new LambdaExpressions();
+        instance.doIt();
+    }
+        //Instance variable capture---------------------------------------------
+    public void doIt(){
+        
+        MyInterface myInterface5 = (String text) -> {
+            System.out.println(text+privateVariable);
+        };
+        
+        myInterface5.printIt("Private variable: ");
+        
+        privateVariable= "Changed private variable";
+        
+        myInterface5.printIt("With new private variable: ");
     }
     
 }
